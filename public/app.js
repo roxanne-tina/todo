@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
     const taskList = document.getElementById('task-list');
     const addTaskForm = document.getElementById('add-task-form');
     const taskTitleInput = document.getElementById('task-title');
@@ -13,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const editTaskDescription = document.getElementById('edit-task-description');
     const editTaskStatus = document.getElementById('edit-task-status');
     
-    // Current filter
+ 
     let currentFilter = 'all';
     
-    // Fetch all tasks
+
     const fetchTasks = async () => {
         try {
             const response = await fetch('/api/tasks');
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // Render tasks based on current filter
+
     const renderTasks = (tasks) => {
         taskList.innerHTML = '';
         
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // Add a new task
+
     const addTask = async (e) => {
         e.preventDefault();
         
@@ -102,10 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Failed to create task');
             }
             
-            // Reset form
+           
             addTaskForm.reset();
             
-            // Refresh tasks
+      
             fetchTasks();
         } catch (error) {
             console.error('Error:', error);
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // Delete a task
+   
     const deleteTask = async (taskId) => {
         if (!confirm('Are you sure you want to delete this task?')) {
             return;
@@ -178,10 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Failed to update task');
             }
             
-            // Close modal
+          
             closeEditModal();
             
-            // Refresh tasks
+           
             fetchTasks();
         } catch (error) {
             console.error('Error:', error);
@@ -189,11 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // Filter tasks
+    
     const filterTasks = (filter) => {
         currentFilter = filter;
         
-        // Update active filter button
+   
         filterButtons.forEach(btn => {
             if (btn.dataset.filter === filter) {
                 btn.classList.add('active');
@@ -202,29 +201,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Refresh tasks with the new filter
         fetchTasks();
     };
     
-    // Event Listeners
+
     addTaskForm.addEventListener('submit', addTask);
     editTaskForm.addEventListener('submit', updateTask);
     closeModalBtn.addEventListener('click', closeEditModal);
     
-    // Close modal when clicking outside
+
     window.addEventListener('click', (e) => {
         if (e.target === editModal) {
             closeEditModal();
         }
     });
     
-    // Filter buttons
+
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             filterTasks(btn.dataset.filter);
         });
     });
     
-    // Initial load
+ 
     fetchTasks();
 });
