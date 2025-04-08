@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><b>Taskify</b></h1>
+        
+        <div class="add-task-container">
+            <form id="add-task-form">
+                <input type="text" id="task-title" placeholder="Task title" required>
+                <textarea id="task-description" placeholder="Task description (optional)"></textarea>
+                <button type="submit" id="add-task-btn">Add Task</button>
+            </form>
+        </div>
+        
+        <div class="tasks-container">
+            <h2>My Tasks</h2>
+            <div class="task-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <ul id="task-list"></ul>
+        </div>
+        
+<!-- Edit Task Modal -->
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Task</h2>
+        <form id="edit-task-form">
+            <input type="hidden" id="edit-task-id">
+            <input type="text" id="edit-task-title" placeholder="Task title" required>
+            <textarea id="edit-task-description" placeholder="Task description (optional)"></textarea>
+            <div class="status-selector">
+                <label for="edit-task-status">Status:</label>
+                <select id="edit-task-status" name="status">
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+    
+    <script src="app.js"></script>
+</body>
+</html>
