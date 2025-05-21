@@ -1,1 +1,8 @@
-A simple web app that allows to create, edit, update and delete your task. Helping someone to organize the tasks.
+To-Do App Features Example
+
+```
+## Features
+- Add and delete tasks
+- Mark tasks as complete
+- Clean,dark, minimalist UI
+- Mobile responsive design
